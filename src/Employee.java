@@ -1,20 +1,17 @@
 public class Employee {
 
-    private final int id;
+    private Integer id;
     private String name;
     private String designation;
     private String department;
 
-    Employee(Integer id, String name, String designation, String department) {
-        this.id = id;
-        this.name = name;
-        this.designation = designation;
-        this.department = department;
-
-    }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

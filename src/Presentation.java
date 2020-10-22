@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Presentation {
@@ -8,6 +10,7 @@ public class Presentation {
     public static void startInteraction() {
 
         System.out.println("-----Welcome to EMS System---------");
+        EmployeeService service = new EmployeeService();
 
         while (loopCondition) {
             System.out.println();
@@ -22,74 +25,114 @@ public class Presentation {
             String designation;
             String department;
             Employee employee;
+            boolean result;
 
-            int choice = sc.nextInt();
-            switch (choice) {
+            try {
 
-                case 1:
-                    System.out.println("Enter id, name, designation and department for the new Employee seperated by space");
-                    id = sc.nextInt();
-                    name = sc.next();
-                    designation = sc.next();
-                    department = sc.next();
-                    employee = EmployeeRepository.addEmployee(id, name, designation, department);
-                    System.out.println("Details of new Employee: " + employee);
-                    break;
+                int choice = sc.nextInt();
+                switch (choice) {
 
-                case 2:
-                    System.out.println("Enter id of the required Employee");
-                    id = sc.nextInt();
-                    employee = EmployeeRepository.getEmployee(id);
-                    if (employee == null){
-                        System.out.println("Employee does not exist");
-                    }else {
-                        System.out.println("Details of the Employee: " + employee);
-                    }
-                    break;
+                    case 1:
 
-                case 3:
-                    System.out.println("Enter the id of the Employee whose details are to be updated");
-                    id = sc.nextInt();
-                    System.out.println("Enter the updated name, designation and department");
-                    name = sc.next();
-                    designation = sc.next();
-                    department = sc.next();
-                    employee = EmployeeRepository.updateEmployee(id, name, designation, department);
-                    if(employee == null){
-                        System.out.println("Employee does not exist");
-                    }else {
-                        System.out.println(employee);
-                    }
-                    break;
+                        System.out.println("Enter id, name, designation and department for the new Employee seperated by space");
+                        id = sc.nextInt();
+                        name = sc.next();
+                        designation = sc.next();
+                        department = sc.next();
 
-                case 4:
-                    ArrayList<Employee> employees = EmployeeRepository.allEmployees();
-                    for (Employee e: employees) {
-                        System.out.println(e);
-                    }
-                    break;
+                        employee = new Employee();
 
-                case 5:
-                    System.out.println("Enter id of the Employee to Delete");
-                    id = sc.nextInt();
-                    employee = EmployeeRepository.deleteEmployee(id);
-                    if (employee!= null) {
-                        System.out.println("Employee Deleted");
-                    }else{
-                        System.out.println("Employee does not exist");
-                    }
-                    break;
+                        employee.setId(id);
+                        employee.setName(name);
+                        employee.setDesignation(designation);
+                        employee.setDepartment(department);
 
-                case 6:
-                    loopCondition = false;
-                    System.out.println("Exiting out of EMS...");
-                    break;
+                        result = service.addEmployee(employee);
+                        if (result) {
+                            System.out.println("Insertion Successful");
+                        } else {
+                            System.out.println("Not successful, Please try again");
+                        }
+                        break;
 
-                default:
-                    System.out.println("Invalid input");
+                    case 2:
+
+                        System.out.println("Enter id of the required Employee");
+                        id = sc.nextInt();
+                        employee = service.getEmployee(id);
+
+                        if (employee != null) {
+                            System.out.println(employee);
+                        } else {
+                            System.out.println("Unsuccessful, employee not found");
+                        }
+
+                        break;
+
+                    case 3:
+
+                        System.out.println("Enter the id of the Employee whose details are to be updated");
+                        id = sc.nextInt();
+                        System.out.println("Enter the updated name, designation and department");
+                        name = sc.next();
+                        designation = sc.next();
+                        department = sc.next();
+
+                        employee = new Employee();
+                        employee.setId(id);
+                        employee.setName(name);
+                        employee.setDesignation(designation);
+                        employee.setDepartment(department);
+
+                        result = service.updateEmployee(employee);
+
+                        if (result) {
+                            System.out.println("Update Successful");
+                        } else {
+                            System.out.println("Update unsuccessful, employee with given id not found");
+                        }
+
+                        break;
+
+                    case 4:
+
+                        HashSet<Employee> employees = service.allEmployees();
+
+                        for (Employee e : employees) {
+                            System.out.println(e);
+                        }
+                        break;
+
+                    case 5:
+
+                        System.out.println("Enter id of the Employee to Delete");
+                        id = sc.nextInt();
+
+                        result = service.deleteEmployee(id);
+
+                        if (result) {
+                            System.out.println("Delete Successful");
+                        } else {
+                            System.out.println("Delete unsuccessful, employee not found");
+                        }
+
+                        break;
+
+                    case 6:
+                        loopCondition = false;
+                        System.out.println("Exiting out of EMS...");
+                        break;
+
+                    default:
+                        System.out.println("Invalid input");
+                }
+
+
+            } catch (InputMismatchException throwable) {
+                sc.nextLine();
+                throwable.printStackTrace();
+                System.out.println("Mismatch input, please try again");
             }
-
-
         }
     }
 
