@@ -1,4 +1,8 @@
-import java.util.ArrayList;
+package com.barclays.ems;
+
+import com.barclays.ems.model.Employee;
+import com.barclays.ems.service.EmployeeService;
+
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -14,11 +18,11 @@ public class Presentation {
 
         while (loopCondition) {
             System.out.println();
-            System.out.println("To add a new Employee press 1");
+            System.out.println("To add a new com.barclays.ems.model.Employee press 1");
             System.out.println("To search for an existing employee press 2");
             System.out.println("To edit an existing employee press 3");
             System.out.println("To view all employees press 4");
-            System.out.println("To delete Employee press 5");
+            System.out.println("To delete com.barclays.ems.model.Employee press 5");
             System.out.println("To Exit out of EMS press 6");
             int id;
             String name;
@@ -34,7 +38,7 @@ public class Presentation {
 
                     case 1:
 
-                        System.out.println("Enter id, name, designation and department for the new Employee seperated by space");
+                        System.out.println("Enter id, name, designation and department for the new com.barclays.ems.model.Employee separated by space");
                         id = sc.nextInt();
                         name = sc.next();
                         designation = sc.next();
@@ -57,7 +61,7 @@ public class Presentation {
 
                     case 2:
 
-                        System.out.println("Enter id of the required Employee");
+                        System.out.println("Enter id of the required com.barclays.ems.model.Employee");
                         id = sc.nextInt();
                         employee = service.getEmployee(id);
 
@@ -71,7 +75,7 @@ public class Presentation {
 
                     case 3:
 
-                        System.out.println("Enter the id of the Employee whose details are to be updated");
+                        System.out.println("Enter the id of the com.barclays.ems.model.Employee whose details are to be updated");
                         id = sc.nextInt();
                         System.out.println("Enter the updated name, designation and department");
                         name = sc.next();
@@ -105,7 +109,7 @@ public class Presentation {
 
                     case 5:
 
-                        System.out.println("Enter id of the Employee to Delete");
+                        System.out.println("Enter id of the com.barclays.ems.model.Employee to Delete");
                         id = sc.nextInt();
 
                         result = service.deleteEmployee(id);

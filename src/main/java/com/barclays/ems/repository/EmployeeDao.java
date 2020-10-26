@@ -1,3 +1,7 @@
+package com.barclays.ems.repository;
+
+import com.barclays.ems.model.Employee;
+
 import java.util.HashSet;
 
 public interface EmployeeDao {

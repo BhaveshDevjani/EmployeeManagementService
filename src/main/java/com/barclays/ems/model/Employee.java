@@ -1,3 +1,5 @@
+package com.barclays.ems.model;
+
 public class Employee {
 
     private Integer id;
@@ -40,7 +42,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee:" +
+        return "com.barclays.ems.model.Employee:" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", designation='" + designation + '\'' +

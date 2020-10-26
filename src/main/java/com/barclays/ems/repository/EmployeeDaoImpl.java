@@ -1,3 +1,8 @@
+package com.barclays.ems.repository;
+
+import com.barclays.ems.model.Employee;
+import com.barclays.ems.repository.EmployeeDao;
+
 import java.sql.*;
 import java.util.HashSet;
 

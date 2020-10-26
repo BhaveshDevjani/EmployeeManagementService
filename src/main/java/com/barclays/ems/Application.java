@@ -1,3 +1,5 @@
+package com.barclays.ems;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

@@ -1,3 +1,9 @@
+package com.barclays.ems.service;
+
+import com.barclays.ems.model.Employee;
+import com.barclays.ems.repository.EmployeeDao;
+import com.barclays.ems.repository.EmployeeDaoImpl;
+
 import java.util.*;
 
 public class EmployeeService {
@@ -5,12 +11,12 @@ public class EmployeeService {
     EmployeeDao employeeDao = new EmployeeDaoImpl();
 
 
-    boolean addEmployee(Employee employee) {
+    public boolean addEmployee(Employee employee) {
 
         return employeeDao.insertEmployee(employee);
     }
 
-    Employee getEmployee(int id) {
+    public Employee getEmployee(int id) {
 
         return employeeDao.getEmployee(id);
     }
