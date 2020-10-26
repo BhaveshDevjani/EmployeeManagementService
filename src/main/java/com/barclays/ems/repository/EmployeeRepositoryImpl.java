@@ -1,12 +1,11 @@
 package com.barclays.ems.repository;
 
 import com.barclays.ems.model.Employee;
-import com.barclays.ems.repository.EmployeeDao;
 
 import java.sql.*;
 import java.util.HashSet;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String url = "jdbc:mysql://localhost:3306/database1";

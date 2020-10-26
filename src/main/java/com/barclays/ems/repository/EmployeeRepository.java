@@ -4,7 +4,7 @@ import com.barclays.ems.model.Employee;
 
 import java.util.HashSet;
 
-public interface EmployeeDao {
+public interface EmployeeRepository {
 
     boolean insertEmployee(Employee employee);
 
