@@ -42,7 +42,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "com.barclays.ems.model.Employee:" +
+        return "Employee:" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", designation='" + designation + '\'' +

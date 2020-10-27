@@ -38,7 +38,7 @@ public class Presentation {
 
                     case 1:
 
-                        System.out.println("Enter id, name, designation and department for the new com.barclays.ems.model.Employee separated by space");
+                        System.out.println("Enter id, name, designation and department for the new Employee separated by space");
                         id = sc.nextInt();
                         name = sc.next();
                         designation = sc.next();
@@ -61,7 +61,7 @@ public class Presentation {
 
                     case 2:
 
-                        System.out.println("Enter id of the required com.barclays.ems.model.Employee");
+                        System.out.println("Enter id of the required Employee");
                         id = sc.nextInt();
                         employee = service.getEmployee(id);
 
@@ -75,7 +75,7 @@ public class Presentation {
 
                     case 3:
 
-                        System.out.println("Enter the id of the com.barclays.ems.model.Employee whose details are to be updated");
+                        System.out.println("Enter the id of the Employee whose details are to be updated");
                         id = sc.nextInt();
                         System.out.println("Enter the updated name, designation and department");
                         name = sc.next();
@@ -109,7 +109,7 @@ public class Presentation {
 
                     case 5:
 
-                        System.out.println("Enter id of the com.barclays.ems.model.Employee to Delete");
+                        System.out.println("Enter id of the Employee to Delete");
                         id = sc.nextInt();
 
                         result = service.deleteEmployee(id);
