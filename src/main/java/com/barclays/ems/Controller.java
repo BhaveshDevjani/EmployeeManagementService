@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Presentation {
+public class Controller {
     static Scanner sc = new Scanner(System.in);
     private static boolean loopCondition = true;
 
