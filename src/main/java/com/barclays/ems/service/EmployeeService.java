@@ -1,38 +1,17 @@
 package com.barclays.ems.service;
 
 import com.barclays.ems.model.Employee;
-import com.barclays.ems.repository.EmployeeRepository;
-import com.barclays.ems.repository.EmployeeRepositoryImpl;
 
-import java.util.*;
+import java.util.HashSet;
 
-public class EmployeeService {
+public interface EmployeeService {
+    boolean addEmployee(Employee employee);
 
-    EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
+    Employee getEmployee(int id);
 
+    boolean updateEmployee(Employee employee);
 
-    public boolean addEmployee(Employee employee) {
+    HashSet<Employee> allEmployees();
 
-        return employeeRepository.insertEmployee(employee);
-    }
-
-    public Employee getEmployee(int id) {
-
-        return employeeRepository.getEmployee(id);
-    }
-
-    public boolean updateEmployee(Employee employee) {
-
-        return employeeRepository.updateEmployee(employee);
-    }
-
-    public HashSet<Employee> allEmployees() {
-
-        return employeeRepository.getAllEmployees();
-    }
-
-    public boolean deleteEmployee(int id) {
-
-        return employeeRepository.deleteEmployee(id);
-    }
+    boolean deleteEmployee(int id);
 }

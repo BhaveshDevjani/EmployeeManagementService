@@ -1,10 +1,12 @@
 package com.barclays.ems.repository;
 
 import com.barclays.ems.model.Employee;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.HashSet;
 
+@Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
