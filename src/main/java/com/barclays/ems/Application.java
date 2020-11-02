@@ -1,21 +1,14 @@
 package com.barclays.ems;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-public class Application extends AbstractAnnotationConfigDispatcherServletInitializer {
+@SpringBootApplication
+public class Application extends SpringBootServletInitializer {
 
-    @Override
-    protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { AppConfig.class };
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
     }
 
-    @Override
-    protected Class<?>[] getServletConfigClasses() {
-        return null;
-    }
-
-    @Override
-    protected String[] getServletMappings() {
-        return new String[] { "/" };
-    }
 }
