@@ -1,6 +1,8 @@
 package com.barclays.ems.repository;
 
+import com.barclays.ems.config.Database;
 import com.barclays.ems.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -9,23 +11,8 @@ import java.util.HashSet;
 @Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-    private static final String driver = "com.mysql.cj.jdbc.Driver";
-    private static final String url = "jdbc:mysql://localhost:3306/database1";
-    private static final String user = "root";
-    private static final String password = "root";
-
-    static Connection getConnection() {
-
-        try {
-
-            Class.forName(driver);
-            Connection con = DriverManager.getConnection(url, user, password);
-            return con;
-
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException("Error Connection to the Database");
-        }
-    }
+    @Autowired
+    Database database;
 
     private Employee extractUserFromResultSet(ResultSet rs) {
 
@@ -49,7 +36,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public boolean insertEmployee(Employee employee) {
 
-        Connection con = getConnection();
+        Connection con = database.getConnection();
 
         try {
 
@@ -77,7 +64,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public Employee getEmployee(int id) {
 
-        Connection con = getConnection();
+        Connection con = database.getConnection();
 
             try {
 
@@ -102,7 +89,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public boolean updateEmployee(Employee employee) {
 
-        Connection con = getConnection();
+        Connection con = database.getConnection();
 
         try {
 
@@ -131,7 +118,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public HashSet<Employee> getAllEmployees() {
 
-        Connection con = getConnection();
+        Connection con = database.getConnection();
 
         try {
 
@@ -158,7 +145,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public boolean deleteEmployee(int id) {
 
-        Connection con = getConnection();
+        Connection con = database.getConnection();
 
         try {
 

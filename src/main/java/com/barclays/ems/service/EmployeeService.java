@@ -9,7 +9,7 @@ public interface EmployeeService {
 
     Employee getEmployee(int id);
 
-    boolean updateEmployee(Employee employee);
+    boolean updateEmployee(int id, String name, String designation, String department);
 
     HashSet<Employee> allEmployees();
 

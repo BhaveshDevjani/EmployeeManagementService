@@ -1,4 +1,4 @@
-package com.barclays.ems;
+package com.barclays.ems.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,18 +17,14 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+        auth .inMemoryAuthentication()
                 .withUser("user1").password(passwordEncoder().encode("user1Pass"))
                 .authorities("ROLE_USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/securityNone").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+        http.csrf().disable();
 
     }
 

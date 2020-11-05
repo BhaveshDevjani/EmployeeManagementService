@@ -1,6 +1,8 @@
 package com.barclays.ems.model;
 
 
+import java.util.Objects;
+
 public class Employee {
 
     private Integer id;
@@ -48,5 +50,21 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", designation='" + designation + '\'' +
                 ", department='" + department + '\'';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(id, employee.id) &&
+                Objects.equals(name, employee.name) &&
+                Objects.equals(designation, employee.designation) &&
+                Objects.equals(department, employee.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, designation, department);
     }
 }
